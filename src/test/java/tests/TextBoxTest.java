@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TextBoxTest extends TestPreset {
+public class TextBoxTest extends TestBase {
     private static final Logger log = LoggerFactory.getLogger(TextBoxTest.class);
     TextBoxPage textBoxPage = new TextBoxPage();
 

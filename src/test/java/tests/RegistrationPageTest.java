@@ -1,10 +1,9 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.pages.RegistrationPage;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
-public class RegistrationPageTest extends TestPreset {
+public class RegistrationPageTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
 
@@ -12,6 +11,7 @@ public class RegistrationPageTest extends TestPreset {
     @Test
     void registrationPageFullTest(){
         registrationPage.openPage()
+                .closeBanner()
                 .setFirstName("Andrew")
                 .setLastName("Tek")
                 .setEmail("andrew@exp.com")
@@ -19,22 +19,22 @@ public class RegistrationPageTest extends TestPreset {
                 .setUserNumber("1234567890")
                 .setDateOfBirth("9","October","2024")
                 .setSubjectInput("Computer Science")
-                .setHobbises("Sports")
+                .setHobbies("Sports")
                 .selectUploadPicture("img/File.jpg")
-                .setAdres("st.Pushkin")
+                .setAddres("st.Pushkin")
                 .setState("NCR")
                 .setCity("Delhi")
                 .clickSubmit()
-                .checkResalt("Andrew Tek")
-                .checkResalt("andrew@exp.com")
-                .checkResalt("Male")
-                .checkResalt("1234567890")
-                .checkResalt("09 October,2024")
-                .checkResalt("Computer Science")
-                .checkResalt("Sports")
-                .checkResalt("file.jpg")
-                .checkResalt("st.Pushkin")
-                .checkResalt("NCR Delhi");
+                .checkResult("Andrew Tek")
+                .checkResult("andrew@exp.com")
+                .checkResult("Male")
+                .checkResult("1234567890")
+                .checkResult("09 October,2024")
+                .checkResult("Computer Science")
+                .checkResult("Sports")
+                .checkResult("file.jpg")
+                .checkResult("st.Pushkin")
+                .checkResult("NCR Delhi");
 
 
     }
@@ -46,9 +46,9 @@ public class RegistrationPageTest extends TestPreset {
                 .setGender("Male")
                 .setUserNumber("1234567890")
                 .clickSubmit()
-                .checkResalt("Andrew Tek")
-                .checkResalt("Male")
-                .checkResalt("1234567890");
+                .checkResult("Andrew Tek")
+                .checkResult("Male")
+                .checkResult("1234567890");
 
 
     }
