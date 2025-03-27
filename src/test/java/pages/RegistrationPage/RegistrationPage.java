@@ -1,4 +1,4 @@
-package pages.pages;
+package pages.RegistrationPage;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
