@@ -1,10 +1,12 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.FakeData.FakeData;
 import pages.RegistrationPage.RegistrationPage;
 
 public class RegistrationPageTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
+    FakeData fakeData = new FakeData();
 
 
 
@@ -12,28 +14,30 @@ public class RegistrationPageTest extends TestBase {
     void registrationPageFullTest(){
         registrationPage.openPage()
                 .closeBanner()
-                .setFirstName("Andrew")
-                .setLastName("Tek")
-                .setEmail("andrew@exp.com")
-                .setGender("Male")
-                .setUserNumber("1234567890")
-                .setDateOfBirth("9","October","2024")
-                .setSubjectInput("Computer Science")
-                .setHobbies("Sports")
-                .selectUploadPicture("img/File.jpg")
-                .setAddres("st.Pushkin")
-                .setState("NCR")
-                .setCity("Delhi")
+                .setFirstName(fakeData.getRandomFirstName())
+                .setLastName(fakeData.getRandomLastName())
+                .setEmail(fakeData.getRandomEmail())
+                .setGender(fakeData.getRandomGender())
+                .setUserNumber(fakeData.getRandomPhoneNumber())
+                .setDateOfBirth(fakeData.getRandomDayOfBirth(),
+                        fakeData.getRandomMonthOfBirth(), fakeData.getRandomYearOfBirth())
+                .setSubjectInput(fakeData.getRandomSubject())
+                .setHobbies(fakeData.getRandomHobbies())
+                .selectUploadPicture(fakeData.getRandomPicture())
+                .setAddress(fakeData.getRandomAddress())
+                .setState(fakeData.getRandomState())
+                .setCity(fakeData.getRandomCity())
                 .clickSubmit()
-                .checkResult("Andrew Tek")
-                .checkResult("andrew@exp.com")
-                .checkResult("Male")
-                .checkResult("1234567890")
-                .checkResult("09 October,2024")
-                .checkResult("Computer Science")
-                .checkResult("Sports")
-                .checkResult("file.jpg")
-                .checkResult("st.Pushkin")
+                .checkResult(fakeData.getRandomFirstName() + " " + fakeData.getRandomLastName())
+                .checkResult(fakeData.getRandomEmail())
+                .checkResult(fakeData.getRandomGender())
+                .checkResult(fakeData.getRandomPhoneNumber())
+                .checkResult(fakeData.getRandomDayOfBirth() + " " + fakeData.getRandomMonthOfBirth()
+                    + " " + fakeData.getRandomYearOfBirth())
+                .checkResult(fakeData.getRandomSubject())
+                .checkResult(fakeData.getRandomHobbies())
+                .checkResult(fakeData.getRandomPicture())
+                .checkResult(fakeData.getRandomAddress())
                 .checkResult("NCR Delhi");
 
 

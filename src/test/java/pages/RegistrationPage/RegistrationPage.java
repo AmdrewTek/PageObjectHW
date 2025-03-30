@@ -75,7 +75,7 @@ public class RegistrationPage {
         uploadPicture.uploadFromClasspath(value);
         return this;
     }
-    public RegistrationPage setAddres(String value){
+    public RegistrationPage setAddress(String value){
         currentAddress.setValue(value);
         return this;
     }
@@ -85,7 +85,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setCity (String value){
-        city.click();
+        state.click();
         $(byText(value)).click();
         return this;
     }
