@@ -28,31 +28,31 @@ public class RegistrationPageTest extends TestBase {
                 .setState(fakeData.getRandomState())
                 .setCity(fakeData.getRandomCity())
                 .clickSubmit()
-                .checkResult(fakeData.getRandomFirstName() + " " + fakeData.getRandomLastName())
-                .checkResult(fakeData.getRandomEmail())
-                .checkResult(fakeData.getRandomGender())
-                .checkResult(fakeData.getRandomPhoneNumber())
-                .checkResult(fakeData.getRandomDayOfBirth() + " " + fakeData.getRandomMonthOfBirth()
-                    + " " + fakeData.getRandomYearOfBirth())
-                .checkResult(fakeData.getRandomSubject())
-                .checkResult(fakeData.getRandomHobbies())
-                .checkResult(fakeData.getRandomPicture())
-                .checkResult(fakeData.getRandomAddress())
-                .checkResult("NCR Delhi");
+                .checkResult(fakeData.name + " " + fakeData.lastName)
+                .checkResult(fakeData.email)
+                .checkResult(fakeData.gender)
+                .checkResult(fakeData.phoneNumber)
+                .checkResult(fakeData.dayOfBirth + " " + fakeData.monthOfBirth
+                        + "," + fakeData.yearOfBirth)
+                .checkResult(fakeData.subject)
+                .checkResult(fakeData.hobbies)
+                .checkResult(fakeData.picture)
+                .checkResult(fakeData.address)
+                .checkResult(fakeData.state + " " + fakeData.city);
 
 
     }
     @Test
     void registrationPageMinimalTest(){
         registrationPage.openPage()
-                .setFirstName("Andrew")
-                .setLastName("Tek")
-                .setGender("Male")
-                .setUserNumber("1234567890")
+                .setFirstName(fakeData.getRandomFirstName())
+                .setLastName(fakeData.getRandomLastName())
+                .setGender(fakeData.getRandomGender())
+                .setUserNumber(fakeData.getRandomPhoneNumber())
                 .clickSubmit()
-                .checkResult("Andrew Tek")
-                .checkResult("Male")
-                .checkResult("1234567890");
+                .checkResult(fakeData.name + " " + fakeData.lastName)
+                .checkResult(fakeData.gender)
+                .checkResult(fakeData.phoneNumber);
 
 
     }

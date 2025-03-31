@@ -85,7 +85,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setCity (String value){
-        state.click();
+        city.click();
         $(byText(value)).click();
         return this;
     }
