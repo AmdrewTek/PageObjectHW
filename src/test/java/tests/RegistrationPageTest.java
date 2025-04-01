@@ -1,12 +1,17 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.FakeData.FakeData;
-import pages.RegistrationPage.RegistrationPage;
+import pages.components.ResultTableCheck;
+import utils.FakeData;
+import pages.registrationpage.RegistrationPage;
+
+
 
 public class RegistrationPageTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     FakeData fakeData = new FakeData();
+    ResultTableCheck resultCheck = new ResultTableCheck();
+
 
 
 
@@ -27,18 +32,24 @@ public class RegistrationPageTest extends TestBase {
                 .setAddress(fakeData.getRandomAddress())
                 .setState(fakeData.getRandomState())
                 .setCity(fakeData.getRandomCity())
-                .clickSubmit()
-                .checkResult(fakeData.name + " " + fakeData.lastName)
-                .checkResult(fakeData.email)
-                .checkResult(fakeData.gender)
-                .checkResult(fakeData.phoneNumber)
-                .checkResult(fakeData.dayOfBirth + " " + fakeData.monthOfBirth
-                        + "," + fakeData.yearOfBirth)
-                .checkResult(fakeData.subject)
-                .checkResult(fakeData.hobbies)
-                .checkResult(fakeData.picture)
-                .checkResult(fakeData.address)
-                .checkResult(fakeData.state + " " + fakeData.city);
+                .clickSubmit();
+                resultCheck.checkResult("Student Name", fakeData.name + " " + fakeData.lastName)
+                        .checkResult("Student Email", fakeData.email)
+                        .checkResult("Gender", fakeData.gender)
+                        .checkResult("Mobile", fakeData.phoneNumber)
+                        .checkResult("Date of Birth", fakeData.dayOfBirth + " " + fakeData.monthOfBirth
+                                + "," + fakeData.yearOfBirth)
+                        .checkResult("Subjects", fakeData.subject)
+                        .checkResult("Hobbies", fakeData.hobbies)
+                        .checkResult("Picture", fakeData.picture)
+                        .checkResult("Address", fakeData.address)
+                        .checkResult("State and City", fakeData.state + " " + fakeData.city);
+
+
+
+
+
+
 
 
     }
@@ -49,10 +60,11 @@ public class RegistrationPageTest extends TestBase {
                 .setLastName(fakeData.getRandomLastName())
                 .setGender(fakeData.getRandomGender())
                 .setUserNumber(fakeData.getRandomPhoneNumber())
-                .clickSubmit()
-                .checkResult(fakeData.name + " " + fakeData.lastName)
-                .checkResult(fakeData.gender)
-                .checkResult(fakeData.phoneNumber);
+                .clickSubmit();
+        resultCheck.checkResult("Student Name", fakeData.name + " " + fakeData.lastName)
+                .checkResult("Gender", fakeData.gender)
+                .checkResult("Mobile", fakeData.phoneNumber);
+
 
 
     }

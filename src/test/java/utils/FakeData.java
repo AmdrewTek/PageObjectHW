@@ -1,4 +1,4 @@
-package pages.FakeData;
+package utils;
 
 import com.github.javafaker.Faker;
 
@@ -47,7 +47,7 @@ public class FakeData {
     }
 
     public String getRandomPhoneNumber() {
-        String fakePhoneNumber = faker.numerify("##########");
+        String fakePhoneNumber = faker.phoneNumber().subscriberNumber(10);
         phoneNumber = fakePhoneNumber;
         return fakePhoneNumber;
     }
@@ -101,32 +101,15 @@ public class FakeData {
         return randomState;
     }
 
-    public String getRandomCity()
-    {
-        //String randomCity = faker.options().option("Delhi", "Gurgaon", "Noida", "Rajasthan");
-        if (state == "NCR")
-        {
-            String randomCity = faker.options().option("Delhi", "Gurgaon", "Noida");
-            city = randomCity;
-            return randomCity;
-        }
-        else if (state == "Uttar Pradesh")
-        {
-            String randomCity = faker.options().option("Agra", "Lucknow", "Merrut");
-            city = randomCity;
-            return randomCity;
-        }
-        else if (state == "Haryana") {
-            String randomCity = faker.options().option("Karnal", "Panipat");
-            city = randomCity;
-            return randomCity;
-        }
-        else if (state == "Rajasthan") {
-            String randomCity = faker.options().option("Jaipur", "Jaiselmer");
-            city = randomCity;
-            return randomCity;
-        }
-        throw new RuntimeException("Unknow state: " + state);
+    public String getRandomCity(){
+        return city = (switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> null;
+        });
+
 
     }
 

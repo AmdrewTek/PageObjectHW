@@ -1,10 +1,10 @@
-package pages.RegistrationPage;
+package pages.registrationpage;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.CalendarComponent;
+import pages.components.ResultTableCheck;
+import pages.components.СalendarСomponent;
 
 import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,12 +25,12 @@ public class RegistrationPage {
             results = $(".modal-body");
 
 
-    CalendarComponent calendarComponent = new CalendarComponent();
+    СalendarСomponent calendarComponent = new СalendarСomponent();
+    ResultTableCheck resultTable = new ResultTableCheck();
 
 
     public RegistrationPage openPage(){
         open("/automation-practice-form");
-
         return this;
     }
     public RegistrationPage closeBanner(){
@@ -93,9 +93,12 @@ public class RegistrationPage {
        submit.click();
         return this;
     }
-    public RegistrationPage checkResult (String value){
-        results.shouldHave(text(value));
+    /*public RegistrationPage checkResult (String value){
+       results.shouldHave(text(value));
         return this;
+    }*/
+    public ResultTableCheck getResultTable(){
+        return resultTable;
     }
     public void checkFirstNameColorInput (){
         fistNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
